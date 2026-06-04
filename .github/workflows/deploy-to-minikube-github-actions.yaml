@@ -18,7 +18,8 @@ jobs:
           eval $(minikube -p minikube docker-env)
           docker build -f ./Dockerfile -t devopshint/node-app:latest .
           echo -n "verifying images:"
-          docker images         
+          docker images
+          docker context use default         
     - name: Deploy to minikube
       run:
         kubectl apply -f k8s-node-app.yaml
